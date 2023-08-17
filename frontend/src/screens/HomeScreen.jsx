@@ -2,7 +2,7 @@ import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
 import products from '../products'
 
-const HoomeScreen = () => {
+const HomeScreen = () => {
   return (
     <>
       <h1>Latest Product</h1>
@@ -17,4 +17,4 @@ const HoomeScreen = () => {
   )
 }
 
-export default HoomeScreen
+export default HomeScreen
