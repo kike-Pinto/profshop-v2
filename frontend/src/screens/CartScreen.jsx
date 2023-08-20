@@ -13,11 +13,11 @@ const CartScreen = () => {
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
 
-  const addToCartHandler = async (product, qty) => {
+  const addToCartHandler = (product, qty) => {
     dispatch(addToCart({ ...product, qty }))
   }
 
-  const removeFromCartHandler = async (id) => {
+  const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id))
   }
 
