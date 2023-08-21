@@ -3,7 +3,7 @@ import { updateCart } from '../utils/cartUtils'
 
 const initialState = localStorage.getItem('cart')
   ? JSON.parse(localStorage.getItem('cart'))
-  : { cartItems: [] }
+  : { cartItems: [], shippingAddress: {}, paymentMethod: 'PayPal' }
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -30,18 +30,27 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter((x) => x._id !== action.payload)
       return updateCart(state)
     },
+
     clearCartItems: (state, action) => {
       state.cartItems = []
       localStorage.setItem('cart', JSON.stringify(state))
     },
-
+    saveShippingAddress: (state, action) => {
+      state.shippingAddress = action.payload
+      return updateCart(state)
+    },
     // We need to reset state for when a user logs out so the next
     // user doesn't inherit the previous users cart and shipping
     resetCart: (state) => (state = initialState),
   },
 })
 
-export const { addToCart, removeFromCart, clearCartItems, resetCart } =
-  cartSlice.actions
+export const {
+  addToCart,
+  removeFromCart,
+  saveShippingAddress,
+  clearCartItems,
+  resetCart,
+} = cartSlice.actions
 
 export default cartSlice.reducer
