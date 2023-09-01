@@ -10,6 +10,7 @@ import {
   useGetProductDetailsQuery,
   useCreateReviewMutation,
 } from '../slices/productsApiSlice'
+import Meta from '../components/Meta'
 import { addToCart } from '../slices/cartSlice'
 
 const ProductScreen = () => {
@@ -66,6 +67,7 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <>
+          <Meta title={product.name} description={product.description} />
           <Row>
             <Col md={5}>
               <Image src={product.image} alt={product.name} fluid />
